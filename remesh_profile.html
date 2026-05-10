@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Remesh V P — Professional Profile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:    #0a1628;
+      --navy2:   #0f2044;
+      --gold:    #c9a84c;
+      --gold2:   #e8c96e;
+      --cream:   #f5f0e8;
+      --white:   #ffffff;
+      --slate:   #8a9bb8;
+      --slate2:  #b4c3d9;
+      --glass:   rgba(255,255,255,0.04);
+      --glass2:  rgba(201,168,76,0.12);
+      --border:  rgba(201,168,76,0.2);
+      --shadow:  0 24px 64px rgba(0,0,0,0.5);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--navy);
+      color: var(--cream);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.4;
+    }
+
+    .bg-orbs {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--gold); top: -100px; right: -100px; animation-delay: 0s; }
+    .orb-2 { width: 400px; height: 400px; background: #2a5298; bottom: -100px; left: -80px; animation-delay: -6s; }
+    .orb-3 { width: 300px; height: 300px; background: var(--gold2); top: 50%; left: 50%; animation-delay: -12s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33%       { transform: translate(30px, -40px) scale(1.1); }
+      66%       { transform: translate(-20px, 30px) scale(0.95); }
+    }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--navy); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 60px;
+      backdrop-filter: blur(20px);
+      background: rgba(10,22,40,0.85);
+      border-bottom: 1px solid var(--border);
+      animation: fadeDown 0.8s ease both;
+    }
+    @keyframes fadeDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600;
+      color: var(--gold); letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--slate2);
+      text-decoration: none; transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 120px 60px 80px;
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: center;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .eyebrow-line { width: 40px; height: 1px; background: var(--gold); }
+    .eyebrow-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      font-weight: 600; line-height: 1.05;
+      color: var(--white);
+      animation: fadeUp 0.8s 0.35s ease both;
+    }
+    .hero-name span { color: var(--gold); }
+
+    .hero-title {
+      margin-top: 20px;
+      font-size: 1rem; font-weight: 300;
+      color: var(--slate2); letter-spacing: 0.04em;
+      animation: fadeUp 0.8s 0.5s ease both;
+    }
+
+    .hero-divider {
+      width: 60px; height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 32px 0;
+      animation: fadeUp 0.8s 0.6s ease both;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem; color: var(--slate2);
+      max-width: 520px; line-height: 1.8;
+      animation: fadeUp 0.8s 0.7s ease both;
+    }
+
+    .hero-cta {
+      margin-top: 44px; display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.85s ease both;
+    }
+    .btn-primary {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      color: var(--navy); font-weight: 600; font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 2px;
+      text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 32px rgba(201,168,76,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(201,168,76,0.45); }
+
+    .btn-outline {
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--gold); font-weight: 500; font-size: 0.82rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border: 1px solid var(--border); cursor: pointer; border-radius: 2px;
+      text-decoration: none; display: inline-block;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .btn-outline:hover { background: var(--glass2); border-color: var(--gold); }
+
+    /* HERO CARD */
+    .hero-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 40px 32px;
+      backdrop-filter: blur(12px);
+      animation: fadeUp 0.8s 0.5s ease both;
+      position: relative; overflow: hidden;
+    }
+    .hero-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .avatar-ring {
+      width: 100px; height: 100px; border-radius: 50%;
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+      background: linear-gradient(135deg, var(--navy2), var(--navy));
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--gold);
+      box-shadow: 0 0 40px rgba(201,168,76,0.2);
+    }
+
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; font-weight: 600;
+      color: var(--white); text-align: center; margin-bottom: 6px;
+    }
+    .card-sub {
+      font-size: 0.78rem; color: var(--gold); text-align: center;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 24px;
+    }
+
+    .card-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px;
+    }
+    .stat-box {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 8px; padding: 14px 12px; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem; font-weight: 700; color: var(--gold); display: block;
+    }
+    .stat-lbl {
+      font-size: 0.7rem; color: var(--slate); letter-spacing: 0.08em;
+      text-transform: uppercase; display: block; margin-top: 2px;
+    }
+
+    .badge-row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center; margin-top: 20px;
+    }
+    .badge {
+      font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--gold); background: var(--glass2);
+      border: 1px solid var(--border); padding: 5px 12px; border-radius: 100px;
+    }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; z-index: 1; padding: 100px 60px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-header { margin-bottom: 64px; }
+    .section-label {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 16px;
+    }
+    .section-label span {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.2em;
+      color: var(--gold); text-transform: uppercase;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600; color: var(--white); line-height: 1.1;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: rgba(15,32,68,0.4); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+    }
+    .about-text p {
+      color: var(--slate2); line-height: 1.9; margin-bottom: 20px; font-size: 0.97rem;
+    }
+    .about-text strong { color: var(--cream); }
+
+    .qualifications { display: flex; flex-direction: column; gap: 16px; }
+    .qual-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 10px; padding: 20px 22px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .qual-item:hover { border-color: var(--gold); transform: translateX(4px); }
+    .qual-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: var(--glass2); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .qual-title { font-weight: 600; color: var(--white); font-size: 0.9rem; }
+    .qual-sub { font-size: 0.78rem; color: var(--slate); margin-top: 2px; }
+
+    /* ── EXPERTISE ── */
+    .expertise-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .expertise-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 12px; padding: 36px 28px;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    .expertise-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .expertise-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,0.4); box-shadow: var(--shadow); }
+    .expertise-card:hover::before { opacity: 1; }
+
+    .exp-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem; font-weight: 700; color: var(--border);
+      position: absolute; top: 16px; right: 24px; line-height: 1;
+      transition: color 0.3s;
+    }
+    .expertise-card:hover .exp-number { color: rgba(201,168,76,0.15); }
+    .exp-icon { font-size: 1.8rem; margin-bottom: 20px; }
+    .exp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--white); margin-bottom: 12px;
+    }
+    .exp-desc { font-size: 0.85rem; color: var(--slate2); line-height: 1.75; }
+
+    /* ── SKILLS ── */
+    #skills { background: rgba(15,32,68,0.4); }
+    .skills-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+    .skill-category-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--gold); margin-bottom: 24px;
+    }
+    .skill-list { display: flex; flex-direction: column; gap: 16px; }
+    .skill-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .skill-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; }
+    .skill-pct { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--gold); }
+    .skill-bar { height: 3px; background: var(--glass); border-radius: 2px; overflow: hidden; }
+    .skill-fill {
+      height: 100%; border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold2));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .skill-fill.animate { transform: scaleX(1); }
+
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      font-size: 0.78rem; color: var(--slate2);
+      background: var(--glass); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 100px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s; cursor: default;
+    }
+    .tag:hover { background: var(--glass2); color: var(--gold); border-color: var(--gold); }
+
+    /* ── CERTIFICATIONS ── */
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .cert-card {
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .cert-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    .cert-badge {
+      width: 52px; height: 52px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0; color: var(--navy);
+    }
+    .cert-name { font-weight: 600; color: var(--white); font-size: 0.92rem; margin-bottom: 4px; }
+    .cert-type { font-size: 0.76rem; color: var(--slate); }
+    .cert-highlight {
+      display: inline-block; margin-top: 8px;
+      font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); background: var(--glass2);
+      border: 1px solid var(--border); padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* ── EXPERIENCE TIMELINE ── */
+    #experience { background: rgba(15,32,68,0.4); }
+    .timeline { position: relative; padding-left: 40px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px; background: linear-gradient(180deg, var(--gold), transparent);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 48px;
+      background: var(--glass); border: 1px solid var(--border);
+      border-radius: 12px; padding: 28px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .timeline-item:hover { border-color: var(--gold); transform: translateX(6px); }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -47px; top: 28px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--gold); border: 3px solid var(--navy);
+      box-shadow: 0 0 16px rgba(201,168,76,0.5);
+    }
+    .timeline-role {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 600; color: var(--white); margin-bottom: 4px;
+    }
+    .timeline-org { font-size: 0.85rem; color: var(--gold); margin-bottom: 8px; letter-spacing: 0.04em; }
+    .timeline-period {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; color: var(--slate); letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .timeline-desc { font-size: 0.87rem; color: var(--slate2); line-height: 1.8; }
+    .timeline-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tl-tag {
+      font-size: 0.68rem; color: var(--slate); background: var(--glass);
+      border: 1px solid var(--border); padding: 4px 10px; border-radius: 100px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    .contact-inner { max-width: 640px; margin: 0 auto; }
+    .contact-links {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; margin-top: 40px;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--glass); border: 1px solid var(--border);
+      padding: 14px 24px; border-radius: 8px;
+      text-decoration: none; color: var(--slate2); font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .contact-link:hover { background: var(--glass2); border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .contact-link svg { width: 18px; height: 18px; }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-copy { font-size: 0.78rem; color: var(--slate); }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 0.9rem; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      #hero { padding: 100px 24px 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .about-grid, .skills-wrapper { grid-template-columns: 1fr; gap: 40px; }
+      .expertise-grid, .cert-grid { grid-template-columns: 1fr; }
+      section { padding: 70px 24px; }
+      footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background Effects -->
+<div class="bg-orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- ══════════════════ NAVIGATION ══════════════════ -->
+<nav>
+  <div class="nav-logo">Remesh V P</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Credentials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════ HERO ══════════════════ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Professional Profile</span>
+      </div>
+      <h1 class="hero-name">Remesh<br><span>V P</span></h1>
+      <p class="hero-title">M.Tech &nbsp;·&nbsp; MBA (Finance & HR) &nbsp;·&nbsp; PTSC Black Belt</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">
+        A seasoned professional blending deep technical engineering expertise with
+        strategic financial and human resource leadership — driving excellence across
+        organizations with a Six Sigma Black Belt mindset.
+      </p>
+      <div class="hero-cta">
+        <a href="https://www.linkedin.com/in/remesh-vp-m-tech-mba-finance-and-hr-ptsc-black-belt-83166b97" target="_blank" class="btn-primary">Connect on LinkedIn</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="hero-card">
+      <div class="avatar-ring">R</div>
+      <div class="card-name">Remesh V P</div>
+      <div class="card-sub">Senior Professional</div>
+      <div class="badge-row">
+        <span class="badge">M.Tech</span>
+        <span class="badge">MBA Finance</span>
+        <span class="badge">MBA HR</span>
+        <span class="badge">Black Belt</span>
+      </div>
+      <div class="card-stats">
+        <div class="stat-box">
+          <span class="stat-num">15+</span>
+          <span class="stat-lbl">Years Exp.</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">2</span>
+          <span class="stat-lbl">PG Degrees</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">⚫</span>
+          <span class="stat-lbl">Black Belt</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-num">360°</span>
+          <span class="stat-lbl">Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ ABOUT ══════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label"><span>Who I Am</span></div>
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I am <strong>Remesh V P</strong>, a multidisciplinary professional with a rare combination of
+          engineering depth, business acumen, and process excellence credentials. My academic foundation
+          spans an <strong>M.Tech in Engineering</strong> and an <strong>MBA with dual specialization
+          in Finance and Human Resources</strong>.
+        </p>
+        <p>
+          Beyond academia, I hold the prestigious <strong>PTSC (Production Technology and Skill Council)
+          Black Belt</strong> certification — placing me among the elite in process improvement, quality
+          management, and Lean Six Sigma methodologies.
+        </p>
+        <p>
+          My career has been defined by bridging the gap between technology and business strategy —
+          turning complex challenges into measurable results. I bring a structured, data-driven
+          approach to everything I do, whether it is optimizing a manufacturing line, managing
+          a budget, or building a high-performing team.
+        </p>
+      </div>
+      <div class="qualifications reveal reveal-delay-2">
+        <div class="qual-item">
+          <div class="qual-icon">🎓</div>
+          <div>
+            <div class="qual-title">Master of Technology (M.Tech)</div>
+            <div class="qual-sub">Advanced Engineering Specialization</div>
+          </div>
+        </div>
+        <div class="qual-item">
+          <div class="qual-icon">📊</div>
+          <div>
+            <div class="qual-title">MBA — Finance</div>
+            <div class="qual-sub">Financial Strategy & Business Management</div>
+          </div>
+        </div>
+        <div class="qual-item">
+          <div class="qual-icon">👥</div>
+          <div>
+            <div class="qual-title">MBA — Human Resources</div>
+            <div class="qual-sub">Talent Management & Organizational Development</div>
+          </div>
+        </div>
+        <div class="qual-item">
+          <div class="qual-icon">⚫</div>
+          <div>
+            <div class="qual-title">PTSC Black Belt</div>
+            <div class="qual-sub">Lean Six Sigma · Process Excellence · Quality Control</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ EXPERTISE ══════════════════ -->
+<section id="expertise">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label"><span>What I Do</span></div>
+      <h2 class="section-title">Areas of Expertise</h2>
+    </div>
+    <div class="expertise-grid">
+      <div class="expertise-card reveal reveal-delay-1">
+        <span class="exp-number">01</span>
+        <div class="exp-icon">⚙️</div>
+        <div class="exp-title">Engineering & Technology</div>
+        <p class="exp-desc">Deep technical expertise from an M.Tech background — applying engineering principles to solve real-world industrial and organizational challenges with precision and rigor.</p>
+      </div>
+      <div class="expertise-card reveal reveal-delay-2">
+        <span class="exp-number">02</span>
+        <div class="exp-icon">💰</div>
+        <div class="exp-title">Financial Management</div>
+        <p class="exp-desc">Strategic financial planning, budgeting, cost optimization and business analysis backed by MBA Finance — aligning financial goals with long-term organizational objectives.</p>
+      </div>
+      <div class="expertise-card reveal reveal-delay-3">
+        <span class="exp-number">03</span>
+        <div class="exp-icon">🤝</div>
+        <div class="exp-title">Human Resources</div>
+        <p class="exp-desc">Talent acquisition, workforce planning, performance management and HR policy development. Building high-performing teams and fostering positive workplace cultures.</p>
+      </div>
+      <div class="expertise-card reveal reveal-delay-1">
+        <span class="exp-number">04</span>
+        <div class="exp-icon">📈</div>
+        <div class="exp-title">Process Excellence</div>
+        <p class="exp-desc">Certified PTSC Black Belt — bringing Lean Six Sigma rigor to process improvement, waste elimination, and quality optimization across complex operations and production lines.</p>
+      </div>
+      <div class="expertise-card reveal reveal-delay-2">
+        <span class="exp-number">05</span>
+        <div class="exp-icon">🎯</div>
+        <div class="exp-title">Strategic Leadership</div>
+        <p class="exp-desc">Cross-functional leadership at the intersection of technology, finance, and people — translating organizational strategy into concrete execution plans with measurable outcomes.</p>
+      </div>
+      <div class="expertise-card reveal reveal-delay-3">
+        <span class="exp-number">06</span>
+        <div class="exp-icon">🔍</div>
+        <div class="exp-title">Quality & Compliance</div>
+        <p class="exp-desc">Establishing quality frameworks, conducting audits, and building compliance systems that consistently meet the highest industry standards and regulatory requirements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ EXPERIENCE TIMELINE ══════════════════ -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label"><span>Career Journey</span></div>
+      <h2 class="section-title">Work Experience</h2>
+    </div>
+    <!-- 
+      ⚠️ UPDATE THESE with actual details from LinkedIn.
+         Add or remove .timeline-item blocks as needed.
+    -->
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-role">Senior Manager / Lead Professional</div>
+        <div class="timeline-org">Organization Name — Update with actual company</div>
+        <div class="timeline-period">20XX – Present</div>
+        <p class="timeline-desc">
+          Leading cross-functional teams across engineering, finance, and HR domains. Driving process
+          improvement initiatives using Six Sigma methodologies resulting in significant operational
+          efficiency gains. Overseeing budgets, talent development, and strategic planning at the
+          departmental level.
+        </p>
+        <div class="timeline-tags">
+          <span class="tl-tag">Leadership</span>
+          <span class="tl-tag">Six Sigma</span>
+          <span class="tl-tag">P&L Management</span>
+          <span class="tl-tag">Team Building</span>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-role">Manager / Department Head</div>
+        <div class="timeline-org">Previous Organization — Update with actual company</div>
+        <div class="timeline-period">20XX – 20XX</div>
+        <p class="timeline-desc">
+          Managed operations and human resources functions simultaneously. Implemented process
+          improvement frameworks and financial controls that reduced costs and improved employee
+          satisfaction scores. Collaborated with senior leadership on organizational restructuring.
+        </p>
+        <div class="timeline-tags">
+          <span class="tl-tag">Operations</span>
+          <span class="tl-tag">HR Management</span>
+          <span class="tl-tag">Cost Reduction</span>
+          <span class="tl-tag">Lean</span>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-role">Engineer / Technical Specialist</div>
+        <div class="timeline-org">Early Career Organization — Update with actual company</div>
+        <div class="timeline-period">20XX – 20XX</div>
+        <p class="timeline-desc">
+          Applied M.Tech engineering expertise in a hands-on technical role. Contributed to
+          product development, quality assurance, and process standardization. Built the technical
+          foundation that later enabled a transition into leadership and management roles.
+        </p>
+        <div class="timeline-tags">
+          <span class="tl-tag">Engineering</span>
+          <span class="tl-tag">Quality Assurance</span>
+          <span class="tl-tag">Process Design</span>
+          <span class="tl-tag">R&D</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ SKILLS ══════════════════ -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label"><span>Competencies</span></div>
+      <h2 class="section-title">Skills & Proficiency</h2>
+    </div>
+    <div class="skills-wrapper">
+      <div class="reveal">
+        <div class="skill-category-title">Core Competencies</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Process Improvement (Six Sigma / Lean)</span><span class="skill-pct">95%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Financial Analysis & Strategic Planning</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">HR Management & Talent Development</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Engineering & Technical Expertise</span><span class="skill-pct">92%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Cross-functional Leadership</span><span class="skill-pct">87%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header"><span class="skill-name">Quality Management & Compliance</span><span class="skill-pct">93%</span></div>
+            <div class="skill-bar"><div class="skill-fill"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="skill-category-title">Tools & Methodologies</div>
+        <div class="tag-cloud">
+          <span class="tag">Lean Six Sigma</span>
+          <span class="tag">DMAIC</span>
+          <span class="tag">Kaizen</span>
+          <span class="tag">5S</span>
+          <span class="tag">Value Stream Mapping</span>
+          <span class="tag">Root Cause Analysis</span>
+          <span class="tag">FMEA</span>
+          <span class="tag">Control Charts</span>
+          <span class="tag">KPI Management</span>
+          <span class="tag">Balanced Scorecard</span>
+          <span class="tag">Talent Management</span>
+          <span class="tag">Budget Planning</span>
+          <span class="tag">Cost Reduction</span>
+          <span class="tag">OD & Change Management</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Quality Audits</span>
+          <span class="tag">Workforce Planning</span>
+          <span class="tag">Risk Analysis</span>
+          <span class="tag">ERP Systems</span>
+          <span class="tag">MS Office Suite</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CERTIFICATIONS ══════════════════ -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-label"><span>Credentials</span></div>
+      <h2 class="section-title">Certifications & Education</h2>
+    </div>
+    <div class="cert-grid">
+      <div class="cert-card reveal reveal-delay-1">
+        <div class="cert-badge">🎓</div>
+        <div>
+          <div class="cert-name">Master of Technology — M.Tech</div>
+          <div class="cert-type">Postgraduate Engineering Degree · Advanced Specialization</div>
+          <span class="cert-highlight">Core Qualification</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-2">
+        <div class="cert-badge">💼</div>
+        <div>
+          <div class="cert-name">MBA — Finance</div>
+          <div class="cert-type">Master of Business Administration · Financial Management</div>
+          <span class="cert-highlight">Dual MBA</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-3">
+        <div class="cert-badge">👤</div>
+        <div>
+          <div class="cert-name">MBA — Human Resources</div>
+          <div class="cert-type">Master of Business Administration · HR & Organizational Behaviour</div>
+          <span class="cert-highlight">Dual MBA</span>
+        </div>
+      </div>
+      <div class="cert-card reveal reveal-delay-4">
+        <div class="cert-badge">⚫</div>
+        <div>
+          <div class="cert-name">PTSC Black Belt</div>
+          <div class="cert-type">Production Technology & Skill Council — Highest Level Certification</div>
+          <span class="cert-highlight">Elite — Black Belt</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ CONTACT ══════════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="section-header reveal">
+        <div class="section-label" style="justify-content:center"><span>Let's Connect</span></div>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      <p class="reveal" style="color:var(--slate2); font-size:0.97rem; line-height:1.9; margin-top:-20px;">
+        Whether you're looking for a strategic partner, an experienced professional to lead your team,
+        or simply want to connect and explore opportunities — I'd love to hear from you.
+      </p>
+      <div class="contact-links reveal reveal-delay-2">
+        <a href="https://www.linkedin.com/in/remesh-vp-m-tech-mba-finance-and-hr-ptsc-black-belt-83166b97" target="_blank" class="contact-link">
+          <!-- LinkedIn Icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+          </svg>
+          LinkedIn Profile
+        </a>
+        <a href="mailto:remesh.vp@email.com" class="contact-link">
+          <!-- Email Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          Send Email
+        </a>
+        <a href="tel:+91XXXXXXXXXX" class="contact-link">
+          <!-- Phone Icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Call Me
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ FOOTER ══════════════════ -->
+<footer>
+  <div class="footer-copy">© 2025 Remesh V P · All rights reserved.</div>
+  <div class="footer-brand">Remesh V P</div>
+</footer>
+
+<!-- ══════════════════ JAVASCRIPT ══════════════════ -->
+<script>
+  // 1. Scroll Reveal Animation
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // 2. Skill Bar Animation (triggers when skills section is in view)
+  const skillSection = document.getElementById('skills');
+  const skillObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // Get widths from the percentage text
+        const items = e.target.querySelectorAll('.skill-item');
+        items.forEach((item, i) => {
+          const pct = item.querySelector('.skill-pct').textContent;
+          const fill = item.querySelector('.skill-fill');
+          fill.style.width = pct; // set width to the % value
+          setTimeout(() => fill.classList.add('animate'), i * 150);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  if (skillSection) skillObserver.observe(skillSection);
+
+  // 3. Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      const isActive = a.getAttribute('href') === '#' + current;
+      a.style.color = isActive ? 'var(--gold)' : '';
+    });
+  });
+
+  // 4. Subtle parallax on hero orbs
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    document.querySelector('.orb-1').style.transform = `translateY(${y * 0.08}px)`;
+    document.querySelector('.orb-2').style.transform = `translateY(${-y * 0.05}px)`;
+  });
+</script>
+</body>
+</html>
